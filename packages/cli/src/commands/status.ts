@@ -1,6 +1,7 @@
-import { readFile, stat } from "fs/promises";
+import { readFile, stat } from "node:fs/promises";
+import { homedir } from "node:os";
+import { join } from "node:path";
 import { ok, okAsync, ResultAsync, safeTry } from "neverthrow";
-import { join } from "path";
 import type { ResidueConfig } from "@/lib/config";
 import { readConfig, readLocalConfig } from "@/lib/config";
 import { residueFetch } from "@/lib/fetch";
@@ -187,6 +188,21 @@ export function status(): ResultAsync<void, CliError> {
 
 		log.info(
 			`  claude-code: ${isClaudeHookConfigured ? "configured" : "not configured"}`,
+		);
+
+		const isCodexHookConfigured = yield* ResultAsync.fromPromise(
+			readFile(join(homedir(), ".codex", "hooks.json"), "utf-8").then(
+				(content) =>
+					content.includes("residue-session-start.sh") &&
+					content.includes("residue-session-end.sh"),
+			),
+			toCliError({
+				message: "Failed to read codex hooks",
+				code: "IO_ERROR",
+			}),
+		).orElse(() => okAsync(false));
+		log.info(
+			`  codex:       ${isCodexHookConfigured ? "configured" : "not configured"}`,
 		);
 
 		const isPiSetup = yield* checkFileExists(

@@ -21,6 +21,7 @@ residue init
 
 # Set up an agent adapter
 residue setup claude-code    # for Claude Code
+residue setup codex          # for Codex
 residue setup pi             # for pi coding agent
 residue setup opencode       # for OpenCode
 ```

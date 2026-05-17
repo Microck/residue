@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { extractClaudeCode } from "@residue/adapter/claude-code";
+import { extractCodex } from "@residue/adapter/codex";
 import { extractOpencode } from "@residue/adapter/opencode";
 import { extractPi } from "@residue/adapter/pi";
 import {
@@ -10,6 +11,43 @@ import {
 import { summarizeToolInput } from "@residue/adapter/shared";
 
 describe("search text extractors", () => {
+	describe("extractCodex", () => {
+		test("extracts messages and tool calls from response items", () => {
+			const raw = [
+				JSON.stringify({
+					type: "response_item",
+					payload: {
+						type: "message",
+						role: "user",
+						content: [{ type: "input_text", text: "set up codex" }],
+					},
+				}),
+				JSON.stringify({
+					type: "response_item",
+					payload: {
+						type: "message",
+						role: "assistant",
+						content: [{ type: "output_text", text: "I will inspect hooks." }],
+					},
+				}),
+				JSON.stringify({
+					type: "response_item",
+					payload: {
+						type: "function_call",
+						name: "exec_command",
+						arguments: '{"cmd":"residue status"}',
+					},
+				}),
+			].join("\n");
+
+			expect(extractCodex(raw)).toEqual([
+				{ role: "human", text: "set up codex" },
+				{ role: "assistant", text: "I will inspect hooks." },
+				{ role: "tool", text: "exec_command residue status" },
+			]);
+		});
+	});
+
 	describe("extractClaudeCode", () => {
 		test("extracts human and assistant messages from JSONL", () => {
 			const raw = [

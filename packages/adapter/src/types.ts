@@ -40,7 +40,7 @@ type MetadataExtractors = {
 	extractSessionName: (raw: string) => string | null;
 };
 
-type ExtractorName = "claude-code" | "opencode" | "pi";
+type ExtractorName = "claude-code" | "codex" | "opencode" | "pi";
 
 type TimestampRange = {
 	firstMessageAt: number | null;

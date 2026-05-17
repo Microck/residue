@@ -3,6 +3,11 @@ import {
 	extractFirstMessage as extractFirstMessageClaudeCode,
 	extractSessionName as extractSessionNameClaudeCode,
 } from "./claude-code/search";
+import {
+	extractCodex,
+	extractFirstMessage as extractFirstMessageCodex,
+	extractSessionName as extractSessionNameCodex,
+} from "./codex/search";
 import { getMapper } from "./mappers";
 import {
 	extractFirstMessage as extractFirstMessageOpencode,
@@ -59,6 +64,7 @@ function buildSearchText(opts: {
 
 const extractors: Record<ExtractorName, (raw: string) => SearchLine[]> = {
 	"claude-code": extractClaudeCode,
+	codex: extractCodex,
 	opencode: extractOpencode,
 	pi: extractPi,
 };
@@ -73,6 +79,10 @@ const metadataExtractors: Record<ExtractorName, MetadataExtractors> = {
 	"claude-code": {
 		extractFirstMessage: extractFirstMessageClaudeCode,
 		extractSessionName: extractSessionNameClaudeCode,
+	},
+	codex: {
+		extractFirstMessage: extractFirstMessageCodex,
+		extractSessionName: extractSessionNameCodex,
 	},
 	opencode: {
 		extractFirstMessage: extractFirstMessageOpencode,

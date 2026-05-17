@@ -6,6 +6,7 @@
 	"exports": {
 		".": "./src/types.ts",
 		"./claude-code": "./src/claude-code/index.ts",
+		"./codex": "./src/codex/index.ts",
 		"./pi": "./src/pi/index.ts",
 		"./opencode": "./src/opencode/index.ts",
 		"./mappers": "./src/mappers.ts",

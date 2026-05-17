@@ -7,12 +7,14 @@
  */
 
 import { claudeCodeMapper } from "./claude-code";
+import { codexMapper } from "./codex";
 import { opencodeMapper } from "./opencode";
 import { piMapper } from "./pi";
 import type { Mapper } from "./types";
 
 const mapperRegistry: Record<string, Mapper> = {
 	"claude-code": claudeCodeMapper,
+	codex: codexMapper,
 	opencode: opencodeMapper,
 	pi: piMapper,
 };
@@ -23,6 +25,7 @@ const getMapper = (agent: string): Mapper | null => {
 
 export { mapperRegistry, getMapper };
 export { claudeCodeMapper } from "./claude-code";
+export { codexMapper } from "./codex";
 export { opencodeMapper } from "./opencode";
 export { piMapper } from "./pi";
 export type { Mapper, Message, ThinkingBlock, ToolCall } from "./types";

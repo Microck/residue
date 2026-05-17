@@ -52,7 +52,7 @@ program
 program
 	.command("setup")
 	.description("Configure an agent adapter for this project")
-	.argument("<agent>", "Agent to set up (claude-code, pi)")
+	.argument("<agent>", "Agent to set up (claude-code, codex, opencode, pi)")
 	.action(wrapCommand((agent: string) => setup({ agent })));
 
 const hook = program
