@@ -21,7 +21,7 @@ details[open] summary .ph-caret-right {
   transform: rotate(90deg);
 }
 
-/* Custom scrollbar — thin, matches zinc dark theme */
+/* Custom scrollbar -- thin, matches zinc dark theme */
 * {
   scrollbar-width: thin;
   scrollbar-color: #3f3f46 transparent;

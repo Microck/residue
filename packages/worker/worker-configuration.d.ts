@@ -8727,7 +8727,7 @@ interface BasicImageTransformations {
      * or an object {x, y} containing focal point coordinates in the original
      * image expressed as fractions ranging from 0.0 (top or left) to 1.0
      * (bottom or right), 0.5 being the center. {fit: "cover", gravity: "top"} will
-     * crop bottom or left and right sides as necessary, but won’t crop anything
+     * crop bottom or left and right sides as necessary, but won't crop anything
      * from the top. {fit: "cover", gravity: {x:0.5, y:0.2}} will crop each side to
      * preserve as much as possible around a point at 20% of the height of the
      * source image.
@@ -8804,7 +8804,7 @@ interface RequestInitCfProperties extends Record<string, unknown> {
      * be proxied on the same Cloudflare zone of the incoming request.
      * Otherwise, the setting is ignored. CNAME hosts are allowed, so to
      * resolve to a host under a different domain or a DNS only domain first
-     * declare a CNAME record within your own zone’s DNS mapping to the
+     * declare a CNAME record within your own zone's DNS mapping to the
      * external hostname, set proxy on Cloudflare, then set resolveOverride
      * to point to that CNAME record.
      */
@@ -8884,7 +8884,7 @@ interface RequestInitCfPropertiesImage extends BasicImageTransformations {
     /**
      * Quality setting from 1-100 (useful values are in 60-90 range). Lower values
      * make images look worse, but load faster. The default is 85. It applies only
-     * to JPEG and WebP images. It doesn’t have any effect on PNG.
+     * to JPEG and WebP images. It doesn't have any effect on PNG.
      */
     quality?: number | "low" | "medium-low" | "medium-high" | "high";
     /**
@@ -8894,7 +8894,7 @@ interface RequestInitCfPropertiesImage extends BasicImageTransformations {
      *    the WebP-lossless format.
      *  - json: instead of generating an image, outputs information about the
      *    image, in JSON format. The JSON object will contain image size
-     *    (before and after resizing), source image’s MIME type, file size, etc.
+     *    (before and after resizing), source image's MIME type, file size, etc.
      * - jpeg: generate images in JPEG format.
      * - png: generate images in PNG format.
      */
@@ -9093,7 +9093,7 @@ interface IncomingRequestCfPropertiesBase extends Record<string, unknown> {
 }
 interface IncomingRequestCfPropertiesBotManagementBase {
     /**
-     * Cloudflare’s [level of certainty](https://developers.cloudflare.com/bots/concepts/bot-score/) that a request comes from a bot,
+     * Cloudflare's [level of certainty](https://developers.cloudflare.com/bots/concepts/bot-score/) that a request comes from a bot,
      * represented as an integer percentage between `1` (almost certainly a bot) and `99` (almost certainly human).
      *
      * @example 54

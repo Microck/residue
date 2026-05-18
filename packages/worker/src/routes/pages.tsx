@@ -246,7 +246,7 @@ const RecentActivity: FC<{
 	);
 };
 
-// Home page — dashboard
+// Home page -- dashboard
 pages.get("/", async (c) => {
 	const { DL } = c.var;
 	const oneYearAgo = Math.floor(Date.now() / 1000) - 365 * 24 * 60 * 60;
@@ -374,7 +374,7 @@ pages.get("/", async (c) => {
 	);
 });
 
-// Org page — list repos for an org
+// Org page -- list repos for an org
 pages.get("/:org", async (c) => {
 	const org = c.req.param("org");
 	const { DL } = c.var;
@@ -476,7 +476,7 @@ pages.get("/:org", async (c) => {
 	);
 });
 
-// Repo page — commit graph with session lanes
+// Repo page -- commit graph with session lanes
 pages.get("/:org/:repo", async (c) => {
 	const org = c.req.param("org");
 	const repo = c.req.param("repo");
@@ -625,7 +625,7 @@ pages.get("/:org/:repo", async (c) => {
 	);
 });
 
-// Commit permalink — full conversations
+// Commit permalink -- full conversations
 pages.get("/:org/:repo/:sha", async (c) => {
 	const org = c.req.param("org");
 	const repo = c.req.param("repo");
